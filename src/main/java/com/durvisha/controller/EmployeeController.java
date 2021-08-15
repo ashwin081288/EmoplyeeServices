@@ -22,7 +22,7 @@ public class EmployeeController {
     @Qualifier("employeeService")
     private EmployeeService employeeService;
 
-    @GetMapping(value = "/api/employee")
+    @GetMapping(value = "/employee")
 //, consumes = MediaType.APPLICATION_JSON_VALUE
     public ResponseEntity<List<Employee>> getEmployeeList() {
 

@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,9 +24,12 @@ import lombok.NoArgsConstructor;
 @JsonClassDescription("Employee Json")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "glossary"
+        "name",
+        "stores"
 })
 public class Employee {
-    @JsonProperty("glossary")
-    private String message;
+    @JsonProperty("name")
+    private String name;
+    @JsonProperty("stores")
+    private List<Store> stores;
 }
