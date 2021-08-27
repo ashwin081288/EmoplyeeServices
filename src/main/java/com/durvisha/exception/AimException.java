@@ -5,10 +5,8 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 
@@ -22,6 +20,8 @@ import java.util.Date;
 @JsonIgnoreType
 @JsonPOJOBuilder
 @JsonAutoDetect
+@EqualsAndHashCode
+@Slf4j
 @JsonClassDescription("Aim Exception Json")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -30,13 +30,13 @@ import java.util.Date;
         "message",
         "description"
 })
-public class AimException {
+public class AimException extends Exception {
     @JsonProperty("statusCode")
     private int statusCode;
     @JsonProperty("timestamp")
     private Date timestamp;
     @JsonProperty("message")
-    private String message;
+    private  String message;
     @JsonProperty("description")
     private String description;
 

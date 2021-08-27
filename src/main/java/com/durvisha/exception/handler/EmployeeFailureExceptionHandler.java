@@ -19,14 +19,14 @@ public class EmployeeFailureExceptionHandler {
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ResponseEntity<AimException> employeeNotFoundException(EmployeeFailureException ex, WebRequest request) {
         AimException aimException = AimException.builder().statusCode(HttpStatus.NOT_FOUND.value()).timestamp(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
-        return new ResponseEntity<AimException>(AimException.builder().build(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(aimException, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<AimException> globalExceptionHandler(Exception ex, WebRequest request) {
         AimException aimException = AimException.builder().statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value()).timestamp(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
-        return new ResponseEntity<AimException>(aimException, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(aimException, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 

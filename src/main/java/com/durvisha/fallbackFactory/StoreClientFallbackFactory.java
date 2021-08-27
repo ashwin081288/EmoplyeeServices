@@ -2,7 +2,6 @@ package com.durvisha.fallbackFactory;
 
 import com.durvisha.clientProxy.StoreClientProxy;
 import com.durvisha.model.Store;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +13,11 @@ import java.util.List;
 public class StoreClientFallbackFactory implements FallbackFactory<StoreClientProxy> {
     @Override
     public StoreClientProxy create(Throwable cause) {
-        return new StoreClientProxy() {
-            @Override
-            public ResponseEntity<List<Store>> getStoreList() {
-                LoggerFactory.getLogger("hello!! fallback reason was " + cause.getMessage());
-                System.out.println("hello!! fallback reason was " + cause.getMessage());
-                return ResponseEntity.ok().build();
-                // return "fallback; reason was: " + cause.getMessage();
-            }
-
+        return () -> {
+            LoggerFactory.getLogger("hello!! fallback reason was " + cause.getMessage());
+            System.out.println("hello!! fallback reason was " + cause.getMessage());
+            return ResponseEntity.ok().build();
+            // return "fallback; reason was: " + cause.getMessage();
         };
     }
 }
