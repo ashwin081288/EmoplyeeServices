@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = "com.durvisha")
 @EnableFeignClients
-@EnableCircuitBreaker
+
 public class EmployeeServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(EmployeeServiceApplication.class, args);
