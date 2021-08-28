@@ -20,13 +20,13 @@ public class HttpClientExceptionHandler {
         AimException aimException = AimException.builder().statusCode(HttpStatus.NOT_FOUND.value()).timestamp(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
         return new ResponseEntity<AimException>(aimException, HttpStatus.NOT_FOUND);
     }
-
+/*
     @ExceptionHandler(value = {EmployeeFailureException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<AimException> httpClientBadRequestException(EmployeeFailureException ex, WebRequest request) {
         AimException aimException = AimException.builder().statusCode(HttpStatus.NOT_FOUND.value()).timestamp(new Date()).message(ex.getMessage()).description(request.getDescription(false)).build();
         return new ResponseEntity<AimException>(aimException, HttpStatus.NOT_FOUND);
-    }
+    }*/
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<AimException> globalExceptionHandler(Exception ex, WebRequest request) {
