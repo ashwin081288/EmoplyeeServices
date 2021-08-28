@@ -14,7 +14,6 @@ com\durvisha\service\EmployeeService.class
 com\durvisha\exception\AimException.class
 com\durvisha\model\Store$StoreBuilder.class
 com\durvisha\model\Employee$EmployeeBuilder.class
-ServletInitializer.class
 com\durvisha\model\Employee.class
 com\durvisha\model\Product.class
 com\durvisha\model\Product$ProductBuilder.class
